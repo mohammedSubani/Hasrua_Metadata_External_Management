@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:2066",
+"RedirectUrl": "",
+"LaunchCommand": "npm run dev",
+"WorkingDirectory": "C:\\Users\\msobani\\source\\repos\\HasuraRolesManagement\\HasuraRolesManagement.Server\\..\\hasurarolesmanagement.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}

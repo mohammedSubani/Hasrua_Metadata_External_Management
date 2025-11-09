@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "hasurarolesmanagement.client", "hasurarolesmanagement.client\hasurarolesmanagement.client.esproj", "{F72E5CB0-2C38-950A-8FC9-088136E414C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HasuraRolesManagement.Server", "HasuraRolesManagement.Server\HasuraRolesManagement.Server.csproj", "{F34F1D27-D1C8-4A3D-A6FE-D47E6D2A9D66}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F72E5CB0-2C38-950A-8FC9-088136E414C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F72E5CB0-2C38-950A-8FC9-088136E414C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F72E5CB0-2C38-950A-8FC9-088136E414C8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F72E5CB0-2C38-950A-8FC9-088136E414C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F72E5CB0-2C38-950A-8FC9-088136E414C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F72E5CB0-2C38-950A-8FC9-088136E414C8}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F34F1D27-D1C8-4A3D-A6FE-D47E6D2A9D66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F34F1D27-D1C8-4A3D-A6FE-D47E6D2A9D66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F34F1D27-D1C8-4A3D-A6FE-D47E6D2A9D66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F34F1D27-D1C8-4A3D-A6FE-D47E6D2A9D66}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4EAA4EF2-22DF-4D72-90E5-B68D77D215F3}
+	EndGlobalSection
+EndGlobal

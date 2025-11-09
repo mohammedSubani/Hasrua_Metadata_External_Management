@@ -1,0 +1,17 @@
+**/node_modules
+**/bin
+**/obj
+**/.vs
+**/.vscode
+**/.idea
+**/.git
+**/dist
+**/build
+*.md
+.env
+.env.local
+*.log
+.DS_Store
+coverage
+**/__pycache__
+**/*.pyc

@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "rCohXA3PYmY=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\msobani\\source\\repos\\HasuraRolesManagement\\HasuraRolesManagement.Server\\HasuraRolesManagement.Server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\msobani\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.4\\microsoft.aspnetcore.openapi.9.0.4.nupkg.sha512",
+    "C:\\Users\\msobani\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\9.0.10\\microsoft.aspnetcore.spaproxy.9.0.10.nupkg.sha512",
+    "C:\\Users\\msobani\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512",
+    "C:\\Users\\msobani\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.21.0\\microsoft.visualstudio.azure.containers.tools.targets.1.21.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # React Client (Frontend) - Development mode
+  client:
+    build:
+      context: ./hasurarolesmanagement.client
+      dockerfile: Dockerfile.dev
+    container_name: hasura-roles-client-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./hasurarolesmanagement.client:/app
+      - /app/node_modules
+    environment:
+      - VITE_HASURA_ENDPOINT=${HASURA_ENDPOINT:-https://hasura-test.mstart.local/v1/metadata}
+      - VITE_HASURA_ADMIN_SECRET=${HASURA_ADMIN_SECRET:-myadminsecretkey}
+    command: npm run dev -- --host
+    restart: unless-stopped
+    networks:
+      - hasura-roles-network
+
+networks:
+  hasura-roles-network:
+    driver: bridge
+

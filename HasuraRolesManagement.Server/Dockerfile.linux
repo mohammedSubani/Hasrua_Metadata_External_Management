@@ -1,0 +1,45 @@
+# Build stage
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+
+WORKDIR /src
+
+# Copy project files
+COPY ["HasuraRolesManagement.Server/HasuraRolesManagement.Server.csproj", "HasuraRolesManagement.Server/"]
+COPY ["hasurarolesmanagement.client/hasurarolesmanagement.client.esproj", "hasurarolesmanagement.client/"]
+
+# Restore dependencies
+RUN dotnet restore "HasuraRolesManagement.Server/HasuraRolesManagement.Server.csproj"
+
+# Copy everything else
+COPY . .
+
+# Build the client (if needed)
+WORKDIR /src/hasurarolesmanagement.client
+RUN if [ -f "package.json" ]; then \
+        curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+        apt-get install -y nodejs && \
+        npm ci && \
+        npm run build; \
+    fi
+
+# Build the server
+WORKDIR /src/HasuraRolesManagement.Server
+RUN dotnet build "HasuraRolesManagement.Server.csproj" -c Release -o /app/build
+
+# Publish stage
+FROM build AS publish
+RUN dotnet publish "HasuraRolesManagement.Server.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+# Runtime stage
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
+WORKDIR /app
+
+# Copy published files
+COPY --from=publish /app/publish .
+
+# Expose ports
+EXPOSE 8080
+EXPOSE 8081
+
+ENTRYPOINT ["dotnet", "HasuraRolesManagement.Server.dll"]
+

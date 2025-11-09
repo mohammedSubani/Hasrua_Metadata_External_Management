@@ -1,0 +1,6 @@
+@HasuraRolesManagement.Server_HostAddress = http://localhost:5064
+
+GET {{HasuraRolesManagement.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

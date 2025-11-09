@@ -1,0 +1,157 @@
+.role-details-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.role-details-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9fafb;
+}
+
+.role-details-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.permission-count {
+  font-size: 12px;
+  color: #6b7280;
+  background: #e5e7eb;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.permissions-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.schema-group {
+  margin-bottom: 32px;
+}
+
+.schema-group:last-child {
+  margin-bottom: 0;
+}
+
+.schema-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.permission-item {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  transition: box-shadow 0.2s;
+}
+
+.permission-item:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.permission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.table-name {
+  font-weight: 600;
+  color: #111827;
+  font-size: 14px;
+}
+
+.permission-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.permission-select {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.permission-insert {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.permission-update {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.permission-delete {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.permission-details {
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.permission-info {
+  margin-top: 8px;
+}
+
+.permission-info strong {
+  color: #111827;
+}
+
+.filter-info,
+.set-info {
+  margin-top: 8px;
+  padding: 8px;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+}
+
+.filter-info code,
+.set-info code {
+  font-size: 12px;
+  color: #059669;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.empty-state {
+  padding: 60px 20px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 14px;
+}
+

@@ -1,0 +1,147 @@
+.roles-list-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-width: 250px;
+  max-width: 300px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.roles-list-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9fafb;
+}
+
+.roles-list-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.role-count {
+  font-size: 12px;
+  color: #6b7280;
+  background: #e5e7eb;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.roles-list {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.role-item {
+  padding: 12px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.2s;
+}
+
+.role-item:hover {
+  background-color: #f9fafb;
+}
+
+.role-item.selected {
+  background-color: #eff6ff;
+  border-left: 3px solid #3b82f6;
+  font-weight: 500;
+}
+
+.role-name {
+  color: #111827;
+  font-size: 14px;
+}
+
+.empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.data-sources-info {
+  padding: 12px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 12px;
+}
+
+.info-item {
+  margin-bottom: 8px;
+  color: #4b5563;
+}
+
+.info-item strong {
+  color: #111827;
+  margin-right: 4px;
+}
+
+.data-source-item {
+  margin-top: 8px;
+  padding: 8px;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.source-name {
+  font-weight: 600;
+  color: #111827;
+  font-size: 13px;
+}
+
+.source-kind {
+  color: #6b7280;
+  font-size: 11px;
+}
+
+.source-table-count {
+  color: #3b82f6;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.add-role-section {
+  padding: 12px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.btn-add-role {
+  width: 100%;
+  padding: 10px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-add-role:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+.btn-add-role:active {
+  transform: translateY(0);
+}
+
