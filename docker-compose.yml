@@ -6,14 +6,14 @@ services:
       context: ./hasurarolesmanagement.client
       dockerfile: Dockerfile
       args:
-        - VITE_HASURA_ENDPOINT=${HASURA_ENDPOINT:-https://hasura-test.mstart.local/v1/metadata}
+        - VITE_HASURA_ENDPOINT=${HASURA_ENDPOINT:-https://192.168.200.141/v1/metadata}
         - VITE_HASURA_ADMIN_SECRET=${HASURA_ADMIN_SECRET:-myadminsecretkey}
     container_name: hasura-roles-client
     ports:
       - "3000:80"
     restart: unless-stopped
     networks:
-      - hasura-roles-network
+      - default
 
   # ASP.NET Core Server (Backend - Optional)
   # server:
