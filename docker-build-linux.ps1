@@ -32,23 +32,34 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-# Create a Linux builder if it doesn't exist
-Write-Host "Setting up Linux builder..." -ForegroundColor Cyan
-docker buildx create --name linux-builder --use --platform linux/amd64 2>&1 | Out-Null
+# Use the default builder (works in Linux container mode)
+Write-Host "Setting up builder..." -ForegroundColor Cyan
 
-# If builder already exists, use it
-docker buildx use linux-builder 2>&1 | Out-Null
-$bootstrapResult = docker buildx inspect --bootstrap 2>&1
-if ($LASTEXITCODE -ne 0) {
-    Write-Host "❌ Failed to bootstrap Linux builder" -ForegroundColor Red
-    Write-Host "Error: $bootstrapResult" -ForegroundColor Red
-    Write-Host ""
-    Write-Host "This usually means Docker Desktop is still in Windows container mode." -ForegroundColor Yellow
-    Write-Host "Please switch to Linux containers and try again." -ForegroundColor Yellow
-    exit 1
+# Try to use default builder first (it should work in Linux mode)
+$builderCheck = docker buildx inspect default 2>&1
+if ($LASTEXITCODE -eq 0) {
+    # Default builder is available, use it
+    Write-Host "✅ Using default builder" -ForegroundColor Green
+} else {
+    # Try desktop-linux builder
+    $linuxBuilderCheck = docker buildx inspect desktop-linux 2>&1
+    if ($LASTEXITCODE -eq 0) {
+        docker buildx use desktop-linux 2>&1 | Out-Null
+        Write-Host "✅ Using desktop-linux builder" -ForegroundColor Green
+    } else {
+        # Create a new builder
+        Write-Host "Creating new Linux builder..." -ForegroundColor Cyan
+        $newBuilderName = "linux-builder-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
+        docker buildx create --name $newBuilderName --use --platform linux/amd64 2>&1 | Out-Null
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host "❌ Failed to create builder" -ForegroundColor Red
+            Write-Host "Please ensure Docker Desktop is in Linux container mode." -ForegroundColor Yellow
+            exit 1
+        }
+        Write-Host "✅ Created and using new builder: $newBuilderName" -ForegroundColor Green
+    }
 }
 
-Write-Host "✅ Linux builder ready" -ForegroundColor Green
 Write-Host ""
 
 # Build the client image
