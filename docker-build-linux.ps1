@@ -67,7 +67,7 @@ Write-Host "Building client image..." -ForegroundColor Cyan
 $clientContext = "./hasurarolesmanagement.client"
 $hasuraEndpoint = $env:HASURA_ENDPOINT
 if (-not $hasuraEndpoint) {
-    $hasuraEndpoint = "https://hasura-test.mstart.local/v1/metadata"
+    $hasuraEndpoint = "https:// 192.168.200.141/v1/metadata"
 }
 $hasuraSecret = $env:HASURA_ADMIN_SECRET
 if (-not $hasuraSecret) {

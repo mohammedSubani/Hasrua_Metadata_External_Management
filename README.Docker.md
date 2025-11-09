@@ -37,7 +37,7 @@ Access at: http://localhost:5173
 Create a `.env` file in the root directory:
 
 ```env
-HASURA_ENDPOINT=https://hasura-test.mstart.local/v1/metadata
+HASURA_ENDPOINT=https:// 192.168.200.141/v1/metadata
 HASURA_ADMIN_SECRET=myadminsecretkey
 ```
 
@@ -56,7 +56,7 @@ docker-compose up client --build
 ```bash
 cd hasurarolesmanagement.client
 docker build \
-  --build-arg VITE_HASURA_ENDPOINT=https://hasura-test.mstart.local/v1/metadata \
+  --build-arg VITE_HASURA_ENDPOINT=https:// 192.168.200.141/v1/metadata \
   --build-arg VITE_HASURA_ADMIN_SECRET=myadminsecretkey \
   -t hasura-roles-client .
 docker run -p 3000:80 hasura-roles-client
