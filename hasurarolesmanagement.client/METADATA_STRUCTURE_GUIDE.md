@@ -154,7 +154,7 @@ You can share metadata in these ways:
 ## Current API Endpoint
 
 The app is configured to use:
-- **Endpoint**: `https:// 192.168.200.141/v1/metadataa`
+- **Endpoint**: `https://192.168.200.141/v1/metadataa`
 - **Export**: `POST` with `{"type": "export_metadata", "args": {}}`
 - **Replace**: `POST` with `{"type": "replace_metadata", "args": { ...metadata }}`
 

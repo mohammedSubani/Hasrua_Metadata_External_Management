@@ -9,7 +9,7 @@ echo "🚀 Starting Hasura Roles Management with Docker..."
 # Check if .env file exists
 if [ ! -f .env ]; then
     echo "⚠️  No .env file found. Creating one with defaults..."
-    echo "HASURA_ENDPOINT=https:// 192.168.200.141/v1/metadata" > .env
+    echo "HASURA_ENDPOINT=https://192.168.200.141/v1/metadata" > .env
 fi
 
 # Check if running in dev mode
