@@ -25,7 +25,7 @@ if %ERRORLEVEL% NEQ 0 (
 REM Check if .env file exists
 if not exist .env (
     echo ⚠️  No .env file found. Creating one with defaults...
-    echo HASURA_ENDPOINT=https://192.168.200.141/v1/metadata > .env
+    echo HASURA_ENDPOINT=https://hasura-test.mstart.local/v1/metadata > .env
 )
 
 REM Check command argument

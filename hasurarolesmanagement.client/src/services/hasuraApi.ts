@@ -1,7 +1,7 @@
 import type { Metadata, Table } from '../types/metadataSchemes';
 
 // Get Hasura endpoint from environment variable or use default
-const HASURA_ENDPOINT = import.meta.env.VITE_HASURA_ENDPOINT || 'https://192.168.200.141/v1/metadata';
+const HASURA_ENDPOINT = import.meta.env.VITE_HASURA_ENDPOINT || 'https://hasura-test.mstart.local/v1/metadata';
 const HASURA_ADMIN_KEY = import.meta.env.VITE_HASURA_ADMIN_SECRET || 'myadminsecretkey';
 
 export interface ExportMetadataRequest {
