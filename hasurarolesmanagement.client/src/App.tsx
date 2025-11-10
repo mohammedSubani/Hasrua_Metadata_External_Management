@@ -98,15 +98,14 @@ function App() {
 
   return (
     <div className="app-container">
-      <header className="app-header">
+      <header className="app-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background:'rgba(8, 8, 8, 0.6)' , filter: 'drop-shadow(0 8px 20px rgba(8, 8, 8, 0.5))'}}>
         <div className="header-content">
           <div className="header-title-section">
             <img 
-              src="https://www.kafana.tech/wp-content/uploads/2021/05/KafanaEng-1.png" 
+              src="https://accomplish.com/wp-content/uploads/2022/07/acomplish_logo_001.webp" 
               alt="Logo" 
               className="header-logo"
             />
-            <h1>Hasura Roles Management</h1>
           </div>
           <div className="header-actions">
             {metadata && (

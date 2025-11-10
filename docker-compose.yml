@@ -3,10 +3,10 @@ services:
   client:
     platform: linux/amd64
     build:
-      context: ./hasurarolesmanagement.client
+      context: ./Hasrua_Metadata_External_Management/hasurarolesmanagement.client
       dockerfile: Dockerfile
       args:
-        - VITE_HASURA_ENDPOINT=${HASURA_ENDPOINT:-https://192.168.200.141/v1/metadata}
+        - VITE_HASURA_ENDPOINT=${HASURA_ENDPOINT:-http://graphql-engine:8080/v1/metadata}
         - VITE_HASURA_ADMIN_SECRET=${HASURA_ADMIN_SECRET:-myadminsecretkey}
     container_name: hasura-roles-client
     ports:

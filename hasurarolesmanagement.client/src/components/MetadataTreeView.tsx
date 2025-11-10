@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { type Metadata } from '../types/metadataSchemes';
-import { getDataSources, getAllTables } from '../services/hasuraApi';
+import { getDataSources } from '../services/hasuraApi';
+import type { JSX } from "react";
 import './MetadataTreeView.css';
 
 interface MetadataTreeViewProps {
