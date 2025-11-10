@@ -8,9 +8,10 @@ interface RolesListProps {
   selectedRole: string | null;
   onRoleSelect: (role: string) => void;
   onAddRoleClick: () => void;
+  onRemoveRole: (role: string) => void;
 }
 
-export function RolesList({ metadata, selectedRole, onRoleSelect, onAddRoleClick }: RolesListProps) {
+export function RolesList({ metadata, selectedRole, onRoleSelect, onAddRoleClick, onRemoveRole }: RolesListProps) {
   const roles = useMemo(() => {
     if (!metadata) return [];
     return extractRoles(metadata);
@@ -72,9 +73,27 @@ export function RolesList({ metadata, selectedRole, onRoleSelect, onAddRoleClick
             <div
               key={role}
               className={`role-item ${selectedRole === role ? 'selected' : ''}`}
-              onClick={() => onRoleSelect(role)}
             >
-              <span className="role-name">{role}</span>
+              <span 
+                className="role-name" 
+                onClick={() => onRoleSelect(role)}
+                style={{ flex: 1, cursor: 'pointer' }}
+              >
+                {role}
+              </span>
+              <button
+                className="btn-delete-role"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (window.confirm(`Are you sure you want to remove the role "${role}"? This will remove all permissions for this role.`)) {
+                    onRemoveRole(role);
+                  }
+                }}
+                title={`Remove role "${role}"`}
+                aria-label={`Remove role ${role}`}
+              >
+                ×
+              </button>
             </div>
           ))
         )}

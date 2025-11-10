@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { exportMetadata, replaceMetadata, copyRolePermissions } from './services/hasuraApi';
+import { exportMetadata, replaceMetadata, copyRolePermissions, removeRole } from './services/hasuraApi';
 import { type Metadata } from './types/metadataSchemes';
 import { RolesList } from './components/RolesList';
 import { RoleDetails } from './components/RoleDetails';
 import { AddRoleModal } from './components/AddRoleModal';
+import { MetadataTreeView } from './components/MetadataTreeView';
 import './App.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   const [saving, setSaving] = useState(false);
   const [showMetadata, setShowMetadata] = useState(false);
   const [showAddRoleModal, setShowAddRoleModal] = useState(false);
+  const [copyButtonText, setCopyButtonText] = useState('Copy JSON');
 
   const loadMetadata = async () => {
     setLoading(true);
@@ -60,6 +62,34 @@ function App() {
     setMetadata(updatedMetadata);
     setSelectedRole(newRoleName);
     setShowAddRoleModal(false);
+  };
+
+  const handleRemoveRole = (roleToRemove: string) => {
+    if (!metadata) return;
+
+    const updatedMetadata = removeRole(metadata, roleToRemove);
+    setMetadata(updatedMetadata);
+
+    // Clear selection if the removed role was selected
+    if (selectedRole === roleToRemove) {
+      setSelectedRole(null);
+    }
+  };
+
+  const handleCopyMetadata = async () => {
+    if (!metadata) return;
+    
+    try {
+      const jsonString = JSON.stringify(metadata, null, 2);
+      await navigator.clipboard.writeText(jsonString);
+      setCopyButtonText('Copied!');
+      setTimeout(() => {
+        setCopyButtonText('Copy JSON');
+      }, 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+      alert('Failed to copy to clipboard');
+    }
   };
 
   useEffect(() => {
@@ -126,6 +156,12 @@ function App() {
                 selectedRole={selectedRole}
                 onRoleSelect={setSelectedRole}
                 onAddRoleClick={() => setShowAddRoleModal(true)}
+                onRemoveRole={handleRemoveRole}
+              />
+              <MetadataTreeView
+                metadata={metadata}
+                selectedRole={selectedRole}
+                onRoleSelect={setSelectedRole}
               />
               <RoleDetails metadata={metadata} role={selectedRole} />
             </div>
@@ -138,18 +174,38 @@ function App() {
           <div className="metadata-panel" onClick={(e) => e.stopPropagation()}>
             <div className="metadata-panel-header">
               <h2>Raw Metadata JSON</h2>
-              <button
-                onClick={() => setShowMetadata(false)}
-                className="metadata-close-btn"
-                aria-label="Close"
-              >
-                ×
-              </button>
+              <div className="metadata-header-actions">
+                <button
+                  onClick={handleCopyMetadata}
+                  className={`btn-copy-json ${copyButtonText === 'Copied!' ? 'copied' : ''}`}
+                  title="Copy JSON to clipboard"
+                >
+                  {copyButtonText}
+                </button>
+                <button
+                  onClick={() => setShowMetadata(false)}
+                  className="metadata-close-btn"
+                  aria-label="Close"
+                >
+                  ×
+                </button>
+              </div>
             </div>
             <div className="metadata-panel-content">
-              <pre className="metadata-json">
-                {JSON.stringify(metadata, null, 2)}
-              </pre>
+              <div className="metadata-json-wrapper">
+                <div className="metadata-line-numbers">
+                  {JSON.stringify(metadata, null, 2)
+                    .split('\n')
+                    .map((_, index) => (
+                      <div key={index} className="line-number">
+                        {index + 1}
+                      </div>
+                    ))}
+                </div>
+                <pre className="metadata-json">
+                  {JSON.stringify(metadata, null, 2)}
+                </pre>
+              </div>
             </div>
           </div>
         </div>

@@ -286,3 +286,63 @@ export function copyRolePermissions(
   return updatedMetadata;
 }
 
+/**
+ * Removes all permissions for a specific role from metadata
+ */
+export function removeRole(metadata: Metadata, roleToRemove: string): Metadata {
+  const updatedMetadata = JSON.parse(JSON.stringify(metadata)) as Metadata; // Deep clone
+
+  if (!updatedMetadata.sources) {
+    return updatedMetadata;
+  }
+
+  updatedMetadata.sources.forEach((source) => {
+    if (source.tables) {
+      source.tables.forEach((table) => {
+        // Remove select permissions
+        if (table.select_permissions) {
+          table.select_permissions = table.select_permissions.filter(
+            (perm) => perm.role !== roleToRemove
+          );
+          // Remove empty array if no permissions left
+          if (table.select_permissions.length === 0) {
+            delete table.select_permissions;
+          }
+        }
+
+        // Remove insert permissions
+        if (table.insert_permissions) {
+          table.insert_permissions = table.insert_permissions.filter(
+            (perm) => perm.role !== roleToRemove
+          );
+          if (table.insert_permissions.length === 0) {
+            delete table.insert_permissions;
+          }
+        }
+
+        // Remove update permissions
+        if (table.update_permissions) {
+          table.update_permissions = table.update_permissions.filter(
+            (perm) => perm.role !== roleToRemove
+          );
+          if (table.update_permissions.length === 0) {
+            delete table.update_permissions;
+          }
+        }
+
+        // Remove delete permissions
+        if (table.delete_permissions) {
+          table.delete_permissions = table.delete_permissions.filter(
+            (perm) => perm.role !== roleToRemove
+          );
+          if (table.delete_permissions.length === 0) {
+            delete table.delete_permissions;
+          }
+        }
+      });
+    }
+  });
+
+  return updatedMetadata;
+}
+
