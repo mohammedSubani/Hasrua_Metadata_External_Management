@@ -154,7 +154,7 @@ You can share metadata in these ways:
 ## Current API Endpoint
 
 The app is configured to use:
-- **Endpoint**: `https://hasura-test.mstart.local/v1/metadataa`
+- **Endpoint**: `https://hasura-test.mstart.local/v1/metadata`
 - **Export**: `POST` with `{"type": "export_metadata", "args": {}}`
 - **Replace**: `POST` with `{"type": "replace_metadata", "args": { ...metadata }}`
 
